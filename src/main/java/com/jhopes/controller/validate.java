@@ -28,7 +28,10 @@ public class validate {
     public void validate(FacesContext arg0, UIComponent arg1, Object arg2)
          throws ValidatorException {
       if (((String)arg2).length()<5) {
-         throw new ValidatorException(new FacesMessage("Al menos 5 caracteres "));
+           FacesMessage msg =
+            new FacesMessage("Número de caracteres","Solo 5 caracteres");
+         msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+         throw new ValidatorException(msg);
       }
    }
 }

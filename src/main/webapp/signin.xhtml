@@ -19,10 +19,11 @@
     <h:body style="padding-top: 60px; background-color: #ADD;">
         <b:container fluid="true">
             <b:panel title="Login" collapsible="false" styleClass="form-signin" look="primary">
-                <h:form styleClass="form-signin" prependId="false">
+                <h:form  prependId="false">
 
-                    <b:inputText id="email" placeholder="Email address" ajax="true"  update="@form" validator="#{validate.validate}">
-                       <f:facet name="prepend">
+                    <b:inputText id="email" placeholder="Email address" ajax="true"  update="@form" validator-message="Error">
+                        <f:validateLength maximum="8" minimum="4"/>
+                        <f:facet name="prepend">
                             <b:icon name="user" />
                         </f:facet>
                     </b:inputText>
