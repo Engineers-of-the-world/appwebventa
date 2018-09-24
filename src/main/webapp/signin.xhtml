@@ -21,8 +21,9 @@
             <b:panel title="Login" collapsible="false" styleClass="form-signin" look="primary">
                 <h:form  prependId="false">
 
-                    <b:inputText id="email" placeholder="Email address" ajax="true"  update="@form" validator-message="Error">
-                        <f:validateLength maximum="8" minimum="4"/>
+                    <b:inputText id="email" placeholder="Email address" ajax="true"  update="@form">
+                        <f:validateLength maximum="30" minimum="4"/>
+                        <f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)"/>
                         <f:facet name="prepend">
                             <b:icon name="user" />
                         </f:facet>
