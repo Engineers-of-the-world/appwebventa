@@ -104,7 +104,7 @@ public final class Conexionbd {
             key = rs.getInt(1);
             rs.close();
             pstmt.close();
-            con.close();
+            //con.close();
         } catch (SQLException e) {
             System.out.println("Error: "+e.getMessage());
         }
@@ -116,6 +116,20 @@ public final class Conexionbd {
             System.out.println("Conexión cerrada.");
         } catch (SQLException e) {
             System.out.println("Error al cerrar la conexión.");
+        }
+    }
+    public void commit(){
+        try {
+            con.commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexionbd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void rollback(){
+        try {
+            con.rollback();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexionbd.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
