@@ -3,28 +3,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
         <style type="text/css">
             .panel-center{
                 margin: 0 auto;
-                max-width: 500px;
+                max-width: 50%;
                 /*padding: 15px;*/
             }
         </style>
-        <script>
-            $('.tags').tagsinput('refresh');
-        </script>
     </h:head>
     <h:body>
         <ui:insert name="header">
             <ui:include src="/templates/header.xhtml"/>
         </ui:insert>
 
-        <b:panel title="Panel title" styleClass="panel-center"  collapsible="false">
-            <b:form>
-                <b:inputText tags="true" style-class="tags" typeahead="true" typeahead-values="#{clientectrl.bandsCSV}" placeholder="Cliente" label="Ingrese el cliente" tiny-screen="full-width" />
+        <b:panel title="Cliente" styleClass="panel-center"  collapsible="false">
+            <b:form>  
+                <b:inputText name="f_ruc" value="" placeholder="Ruc o DNI" tiny-screen="full-width" >
+                    <f:facet name="append">
+                        <b:commandButton look="primary" value="Buscar" ajax="true" update="@form" iconAwesome="search" icon-align="right"/>
+                    </f:facet>
+                </b:inputText>
+                <!--typeahead="true" typeahead-values="#{clientectrl.bandsList}"-->
+                <b:inputText  name="f_nombrecli"  placeholder="Cliente" tiny-screen="full-width" />
+                <b:inputText name="f_direccion" placeholder="Dirección" tiny-screen="full-width"></b:inputText>
+            </b:form>
+        </b:panel>
+        <b:panel title="Producto" styleClass="panel-center"  collapsible="false">
+            <b:form>  
+                <b:inputText name="f_nombreprod" value="" placeholder="Producto" tiny-screen="full-width" >
+                    <f:facet name="append">
+                        <b:commandButton look="primary" value="Buscar" ajax="true" update="@form" iconAwesome="search" icon-align="right"/>
+                    </f:facet>
+                </b:inputText>                
+                <b:inputText  name="f_precio"  placeholder="Precio" tiny-screen="full-width" />
+                <b:inputText name="f_cantidad" placeholder="Cantidad" tiny-screen="full-width"></b:inputText>
+                <b:commandButton look="primary" value="Agregar" ajax="true" update="@form" iconAwesome="add" icon-align="right"/>
             </b:form>
         </b:panel>
 
