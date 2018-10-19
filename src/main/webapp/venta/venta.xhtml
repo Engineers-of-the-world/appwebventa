@@ -21,25 +21,30 @@
         </ui:insert>
 
         <b:panel title="Cliente" styleClass="panel-center"  collapsible="false">
-            <b:form>  
-                <b:inputText name="f_ruc" value="" placeholder="Ruc o DNI" tiny-screen="full-width" >
+            <b:form id="searchcliente">                  
+                <b:inputText name="f_dni_ruc" value="#{clientectrl.selectedcli.dni_ruc}"  typeahead="true" typeahead-values="#{clientectrl.list}" placeholder="Ruc o DNI" tiny-screen="full-width">
                     <f:facet name="append">
-                        <b:commandButton look="primary" value="Buscar" ajax="true" update="@form" iconAwesome="search" icon-align="right"/>
+                        <b:commandButton look="primary" value="Buscar" ajax="true" update=":resultsearchcliente" onclick="ajax:clientectrl.searchRuc(clientectrl.list,clientectrl.selectedcli.dni_ruc)" iconAwesome="search" icon-align="right"/>
                     </f:facet>
                 </b:inputText>
-                <!--typeahead="true" typeahead-values="#{clientectrl.bandsList}"-->
-                <b:inputText  name="f_nombrecli"  placeholder="Cliente" tiny-screen="full-width" />
-                <b:inputText name="f_direccion" placeholder="Dirección" tiny-screen="full-width"></b:inputText>
+            </b:form> 
+            <b:form id="resultsearchcliente">
+                <b:inputText id="f_nombrecli" name="f_nombrecli"  value="#{clientectrl.selectedcli.nombres_razon_social}"  placeholder="Cliente" tiny-screen="full-width" />
+                <!--<b:inputText name="f_direccion" value="#{clientectrl.selectedclidir.direccion}" placeholder="Dirección" tiny-screen="full-width"></b:inputText>-->
+                <b:selectOneMenu value="#{clientectrl.selectedclidir}" tiny-screen="full-width">
+                    <f:selectItems itemLabel="--Seleccione--" itemValue=""/>
+                    <f:selectItems value="#{clientectrl.listclidir}" var="lista" itemLabel="#{lista.direccion}"  itemValue="#{lista.id_cliente_direccion}"/>
+                </b:selectOneMenu>
             </b:form>
         </b:panel>
         <b:panel title="Producto" styleClass="panel-center"  collapsible="false">
-            <b:form>  
-                <b:inputText name="f_nombreprod" value="" placeholder="Producto" tiny-screen="full-width" >
+            <b:form horizontal="true">  
+                <b:inputText name="f_nombreprod" value="#{productostockctrl.selected.descripcion}" typeahead="true" typeahead-values="#{productostockctrl.listprostock}" placeholder="Producto" tiny-screen="full-width" ajax="true" update="@form" onchange="ajax:productostockctrl.searchprodstock(productostockctrl.listprostock, productostockctrl.selected.descripcion)" >
                     <f:facet name="append">
                         <b:commandButton look="primary" value="Buscar" ajax="true" update="@form" iconAwesome="search" icon-align="right"/>
                     </f:facet>
                 </b:inputText>                
-                <b:inputText  name="f_precio"  placeholder="Precio" tiny-screen="full-width" />
+                <b:inputText  name="f_precio"  value="#{productostockctrl.selected.precio_venta}" placeholder="Precio" tiny-screen="full-width" />
                 <b:inputText name="f_cantidad" placeholder="Cantidad" tiny-screen="full-width"></b:inputText>
                 <b:commandButton look="primary" value="Agregar" ajax="true" update="@form" iconAwesome="add" icon-align="right"/>
             </b:form>

@@ -15,6 +15,7 @@ import java.util.List;
 public interface ProductostockDAO {
     public int createProductostock(Productostock ps);
     //public List<Productostock> readProductostock();
+    public List<Productostock> readProductoVenta(String cond);
     public boolean updateProductostock(Productostock ps);
     public boolean deleteProductostock(String id);
 }

@@ -64,7 +64,7 @@ public final class Conexionbd {
         try { // preparamos la conexión            
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/dbprueba",
+                    "jdbc:postgresql://localhost:5432/ventadb",
                     "postgres", "123456");
             st = (Statement) con.createStatement();
             System.out.println("conexión abierta.");

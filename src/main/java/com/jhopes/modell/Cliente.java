@@ -64,6 +64,6 @@ public class Cliente {
         this.dni_ruc = dni_ruc;
     }
     public String toString(){
-        return nombres_razon_social;
+        return dni_ruc;
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface ClientedireccionDAO {
     public int createClientedireccion(Clientedireccion cld);
-    public List<Clientedireccion> readClientedireccion();
+    public List<Clientedireccion> readClientedireccion(String cond);
     public boolean updateClientedireccion(Clientedireccion cl);
     public boolean deleteClientedireccion(String id);
 }
